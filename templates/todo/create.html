@@ -1,0 +1,34 @@
+{% extends "layouts/base.html" %}
+
+
+{% block title %}Create doto | {% endblock %}
+
+{% block content %}
+<div class="card mt-5">
+    <div class="card-header">
+        Tot
+    </div>
+    <div class="card-body">
+        {% if success == 'true' %}
+        <div class="alert alert-success" role="alert">
+           {{message}}
+        </div>
+         {% elif success == 'false' %}
+        <div class="alert alert-danger" role="alert">
+        {{message}}
+        </div>
+
+        {% endif %}
+       
+        <form method="POST" action="/todo/create"> 
+            <div class="form-group">
+                <label for="title">Todo Title</label>
+                <input type="text" class="form-control" id="title" aria-describedby="title" name="title"> 
+            </div>  
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        
+    </div>
+</div>
+
+{% endblock %}

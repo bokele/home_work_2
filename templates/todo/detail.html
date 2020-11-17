@@ -1,0 +1,62 @@
+{% extends "layouts/base.html" %}
+{% block title %}Todo List Detail | {% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Actions</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Task Name</th>
+                        <th scope="col">Description</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                {% for task in todoListTask %}
+                    <tr>
+                        <th scope="row">
+                            
+                            <form method="POST" action="/task/delete/{{task.todo_id}}">
+                                <input type="hidden" value="{{task.id}}" name="task_id" />
+                                <a href="/task/edit/{{task.id}}" class="btn btn-primary">Edit</a>
+                              
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                           
+                        </th>
+                        
+                        <td>{% if task.status == True %}
+                        <span class="badge badge-success">Complete</span>
+                        {% else %}
+                        <span class="badge badge-danger">Cancel</span>
+                        {% endif %}</td>
+                        <td>{{task.task_name}}</td>
+                        <td>{{task.task_body}}</td>
+                        
+                      
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div class="col-md-12 mt-4">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul class=flashes>
+                    {% for message in messages %}
+                    {{ message }}
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+    </div>
+
+    </div>
+    
+    
+    {% endblock %}

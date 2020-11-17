@@ -1,0 +1,65 @@
+{% extends "layouts/base.html" %}
+{% block title %}Dashboard | {% endblock %}
+
+{% block header %}
+
+<div class="alert alert-primary" role="alert">
+   
+</div>
+<div class="alert alert-primary" role="alert">
+    Welcom back <a href="#" class="alert-link">{{ session['username']}}</a>
+</div>
+{% endblock %}
+
+
+
+
+{% block content %}
+<div class="row">
+    <div class="float-left col-md-12">
+        <a class="btn btn-primary  btn-lg active " href="{{url_for("createTodo")}}" role="button">Create New todo</a>
+    </div>
+    
+        <div class="col-md-12 mt-4">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class=flashes>
+                {% for message in messages %}
+                {{ message }}
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+            </div>
+            
+        {%  for todo in todoList %}
+       
+      
+    <div class="col-sm-5 mb-3 mt-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ todo.title}}</h5>
+                <p class="card-text">{{ todo.body}}</p>
+                <p class="card-text">{{ todo.execution_date}}</p>
+               
+                <form method="POST" action="/todo/delete">
+                    <input type="hidden" value="{{todo.id}}" name="todo_id"/>
+                    <a href="/todolist/add/task/{{todo.id}}" class="btn btn-outline-success">Add Task</a>
+                    <a href="/todolist/view/task/{{todo.id}}" class="btn btn-outline-success">View Task</a>
+                    <a href="/todolist/edit/{{todo.id}}" class="btn btn-outline-primary">Edit</a>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+        {% endfor %}
+    
+    </div>
+
+    
+
+</div>
+
+
+{% endblock %}

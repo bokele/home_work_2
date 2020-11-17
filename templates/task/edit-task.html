@@ -1,0 +1,41 @@
+{% extends "layouts/base.html" %}
+
+
+{% block title %}Edit doto | {% endblock %}
+
+{% block content %}
+<div class="card mt-5">
+    <div class="card-header">
+        Tot
+    </div>
+    <div class="card-body">
+       
+
+        <form method="POST" action="/task/edit/{{task_data.id}}">
+            <div class="form-group">
+                <label for="task_name">Task Name</label>
+                <input type="text" value="{{task_data.task_name}}" class="form-control" id="task_name" aria-describedby="task_name" name="task_name">
+            </div>
+            <div class="form-group">
+                <label for="task_body">Task body</label>
+                <textarea class="form-control" id="task_body" aria-describedby="task_body" name="task_body">{{task_data.task_body}}</textarea>
+                
+            </div>
+            <div class="form-group">
+                <label for="status">Task body</label>
+               <select class="form-control" id="status" aria-describedby="status" name="status">
+                   <option >Select Status</option>
+                   <option value="true" {% if task_data.status == True %} selected {% endif %}>Complete</option>
+                   <option value="fasle" {% if task_data.status == False %} selected {% endif %}>Cancel</option>
+                   
+               </select>
+            
+            </div>
+            <input type="hidden" name="todo_id" value="{{task_data.todo_id}}">
+            <button type="submit" class="btn btn-primary">Save Task</button>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

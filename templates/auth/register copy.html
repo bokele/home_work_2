@@ -1,0 +1,52 @@
+{% extends "structure.html" %}
+
+{% block main%}
+{{message}}
+<div class="login">
+    <form action="/register" method="post">
+        <div class="tilte-center">
+            <h1>Sign Up</h1>
+            <p>Please fill in this form to create an account.</p>
+        </div>
+       
+        <hr>
+
+        <div class="login-container">
+            <div>
+                <label for="email"><b>Name<span
+                            class="text-danger">*</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <input type="text" placeholder="Name" name="name" required>
+            </div>
+            <div>
+            <div>
+                <label for="email"><b>Email<span class="text-danger">*</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <input type="text" placeholder="Enter Email" name="email" required>
+            </div>
+            <div>
+                <label for="password"><b>Password<span class="text-danger">*</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required>
+            </div>
+            <div>
+                <label for="confirm_password"><b>Repeat Password<span class="text-danger">*</span></b></label>
+                <input type="password" placeholder="Repeat Password" name="confirm_password" required>
+            </div>
+
+
+            <button type="submit">Sing up</button>
+            <div>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+
+                <span class="psw">Forgot <a href="#">password?</a></span>
+
+            </div>
+
+
+        </div>
+
+
+    </form>
+</div>
+
+{% endblock %}

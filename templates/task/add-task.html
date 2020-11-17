@@ -1,0 +1,49 @@
+{% extends "layouts/base.html" %}
+
+
+{% block title %}Create doto | {% endblock %}
+
+{% block content %}
+<div class="card mt-5">
+    <div class="card-header">
+        Tot
+    </div>
+    <div class="card-body">
+        {% if success == 'true' %}
+        <div class="alert alert-success" role="alert">
+            {{message}}
+        </div>
+        {% elif success == 'false' %}
+        <div class="alert alert-danger" role="alert">
+            {{message}}
+        </div>
+
+        {% endif %}
+
+        <form method="POST" action="/todolist/add/task/{{todo_id}}">
+            <div class="form-group">
+                <label for="task_name">Task Name</label>
+                <input type="text" class="form-control" id="task_name" aria-describedby="task_name" name="task_name">
+            </div>
+            <div class="form-group">
+                <label for="task_body">Task body</label>
+                <textarea class="form-control" id="task_body" aria-describedby="task_body" name="task_body"></textarea>
+                
+            </div>
+            <div class="form-group">
+                <label for="status">Task body</label>
+               <select class="form-control" id="status" aria-describedby="status" name="status">
+                   <option >Select Status</option>
+                   <option value="true">Complete</option>
+                   <option value="fasle">Cancel</option>
+                   
+               </select>
+            
+            </div>
+            <button type="submit" class="btn btn-primary">Add Task</button>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
